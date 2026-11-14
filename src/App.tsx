@@ -6,11 +6,13 @@ import { Board } from './sections/Board'
 import { Closing } from './sections/Closing'
 import { Ecosystem } from './sections/Ecosystem'
 import { Info } from './sections/Info'
+import { Network } from './sections/Network'
 import { Screens } from './sections/Screens'
 import { EASE, Logo } from './ui'
 
 const NAV = [
   { href: '#ecossistema', label: 'Como funciona' },
+  { href: '#rede', label: 'Marília' },
   { href: '#telas', label: 'Telas' },
   { href: '#ideias', label: 'Ideias' },
   { href: '#desafio', label: 'Desafio' },
@@ -94,7 +96,7 @@ function Hero() {
         className="inline-flex items-center gap-1.5 rounded-full border border-line-strong py-[3px] pr-3 pl-[5px] text-[11px] text-mute"
       >
         <img src="/images/dino-96.png" alt="" className="size-6 object-contain" />
-        protótipo para o desafio <strong className="font-semibold text-text">FACESP</strong>
+        <strong className="font-semibold text-text">ACIM Connect Marília</strong> · desafio FACESP
       </motion.p>
 
       <motion.h1
@@ -143,7 +145,7 @@ function Hero() {
         className="mt-5 flex items-center gap-1.5 text-[11px] text-mute"
       >
         <CalendarBlank className="size-3.5" />
-        Rodada de soluções · toda terça, 19h · na sua associação comercial
+        Rodada de soluções · toda terça, 19h · ACIM Connect Marília
       </motion.p>
     </section>
   )
@@ -159,6 +161,7 @@ export default function App() {
           <Hero />
           <Board />
           <Ecosystem />
+          <Network />
           <Screens />
           <Info />
           <Closing />

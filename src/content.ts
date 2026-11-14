@@ -9,21 +9,21 @@ export type Role = 'lojista' | 'associacao' | 'startup'
 export const ROLES: Record<Role, { label: string; who: string; color: string; emoji?: string; src?: string; line: string }> = {
   lojista: {
     label: 'Lojista',
-    who: 'Marina · Empório Bom Grão',
+    who: 'Marina · Empório Bom Grão, Centro de Marília',
     color: '#E08144',
     emoji: '🧺',
     line: 'Conta o que precisa em uma frase e recebe soluções que cabem na realidade da loja — com o porquê.',
   },
   associacao: {
     label: 'Associação',
-    who: 'Carlos · Associação Comercial de Vale Verde',
+    who: 'Carlos · ACIM Connect Marília',
     color: '#8FA67F',
     emoji: '🏛️',
     line: 'Faz a curadoria: aprova startups e anúncios, qualifica demandas sem solução e mede o impacto na rede.',
   },
   startup: {
     label: 'Startup',
-    who: 'Rafael · Vendeja',
+    who: 'Equipe · GaekWare',
     color: '#7FA6C8',
     emoji: '🚀',
     line: 'Entra no catálogo da rede, recebe pedidos de teste e briefings de demandas reais para desenvolver junto.',
@@ -33,14 +33,14 @@ export const ROLES: Record<Role, { label: string; who: string; color: string; em
 /* ───────── quadro "o que os lojistas mais pedem" ───────── */
 export type BoardStatus = 'com solução' | 'em teste' | 'em triagem' | 'oportunidade'
 export const BOARD: { need: string; category: string; emoji: string; segment: string; stores: number; status: BoardStatus }[] = [
-  { need: 'Dividir a entrega entre lojas vizinhas', category: 'Logística & entrega', emoji: '🛵', segment: 'Papelaria · centro', stores: 23, status: 'oportunidade' },
-  { need: 'Vender pelo Instagram sem responder tudo na mão', category: 'Vendas & WhatsApp', emoji: '💬', segment: 'Mercearia', stores: 14, status: 'com solução' },
-  { need: 'Comparar opções de crédito para estoque de fim de ano', category: 'Pagamentos & crédito', emoji: '💳', segment: 'Bazar · MEI', stores: 9, status: 'em triagem' },
-  { need: 'Saber quais produtos estão parados no estoque', category: 'Gestão & estoque', emoji: '📦', segment: 'Mercearia', stores: 6, status: 'em teste' },
-  { need: 'Provador virtual de óculos no Instagram', category: 'Marketing & redes', emoji: '👓', segment: 'Ótica', stores: 5, status: 'oportunidade' },
-  { need: 'Lembrar clientes de voltar à loja', category: 'Vendas & WhatsApp', emoji: '🔁', segment: 'Ótica', stores: 4, status: 'com solução' },
-  { need: 'Cobrar o fiado sem constrangimento', category: 'Pagamentos & crédito', emoji: '📒', segment: 'Mercearia · MEI', stores: 12, status: 'com solução' },
-  { need: 'Saber o melhor dia para fazer promoção', category: 'Dados & inteligência', emoji: '📊', segment: 'Moda', stores: 7, status: 'em teste' },
+  { need: 'Dividir a entrega entre lojas vizinhas', category: 'Logística & entrega', emoji: '🛵', segment: 'Papelaria · Av. Sampaio Vidal', stores: 23, status: 'oportunidade' },
+  { need: 'Vender pelo Instagram sem responder tudo na mão', category: 'Vendas & WhatsApp', emoji: '💬', segment: 'Mercearia · Centro', stores: 14, status: 'com solução' },
+  { need: 'Cobrar o fiado sem constrangimento', category: 'Pagamentos & crédito', emoji: '📒', segment: 'Mercearia · Palmital', stores: 12, status: 'com solução' },
+  { need: 'Comparar opções de crédito para estoque de fim de ano', category: 'Pagamentos & crédito', emoji: '💳', segment: 'Bazar · Palmital', stores: 9, status: 'em triagem' },
+  { need: 'Mostrar ao produtor o resultado dos insumos', category: 'Dados & inteligência', emoji: '🛰️', segment: 'Revenda agro · Distrito Industrial', stores: 8, status: 'em teste' },
+  { need: 'Responder clientes no WhatsApp fora do horário', category: 'Atendimento', emoji: '🌙', segment: 'Pet shop · Fragata', stores: 7, status: 'com solução' },
+  { need: 'Saber quais produtos estão parados no estoque', category: 'Gestão & estoque', emoji: '📦', segment: 'Mercearia · Centro', stores: 6, status: 'em teste' },
+  { need: 'Provador virtual de óculos no Instagram', category: 'Marketing & redes', emoji: '👓', segment: 'Ótica · Marília Shopping', stores: 5, status: 'oportunidade' },
 ]
 
 /* ───────── como o ecossistema conversa (diagrama de sequência) ───────── */
@@ -53,7 +53,7 @@ export const FLOWS: Record<'com' | 'sem', { title: string; summary: string; step
       { from: 'lojista', to: 'linkhub', text: '“Quero vender pelo Instagram sem responder tudo na mão.”', detail: 'categoria, canais, porte e orçamento em 3 passos' },
       { from: 'linkhub', to: 'lojista', text: '3 soluções compatíveis, com o porquê', detail: '✓ funciona no WhatsApp e Instagram · ✓ cabe no orçamento · ✗ pensado para empresa pequena' },
       { from: 'lojista', to: 'startup', text: 'Pedido de teste grátis em 1 clique', detail: 'a startup recebe o perfil da loja, não dados de clientes' },
-      { from: 'startup', to: 'lojista', text: '“Liberamos 14 dias. Te chamamos no WhatsApp para configurar!”' },
+      { from: 'startup', to: 'lojista', text: '“Liberamos 14 dias. Te chamamos no WhatsApp para configurar!”', detail: 'ex.: Atendente 24/7 da Shield-ACK para responder fora do horário' },
       { from: 'lojista', to: 'associacao', text: 'Avaliação pós-teste', detail: 'vira reputação no catálogo: “18 lojas testaram, 11 continuaram”' },
     ],
   },
@@ -62,10 +62,10 @@ export const FLOWS: Record<'com' | 'sem', { title: string; summary: string; step
     summary: 'A necessidade não se perde: vira um briefing qualificado e uma oportunidade de desenvolvimento conjunto.',
     steps: [
       { from: 'lojista', to: 'linkhub', text: '“Queria dividir a entrega com as lojas vizinhas.”' },
-      { from: 'linkhub', to: 'associacao', text: 'Nenhuma solução compatível → triagem', detail: 'outros 23 lojistas marcaram “tenho a mesma necessidade”' },
+      { from: 'linkhub', to: 'associacao', text: 'Nenhuma solução compatível → triagem na ACIM Connect', detail: 'outros 23 lojistas do centro de Marília marcaram “tenho a mesma necessidade”' },
       { from: 'associacao', to: 'startup', text: 'Oportunidade publicada com hipóteses a validar', detail: 'perfil das lojas, canais, orçamento, nº de lojistas e lojas-piloto' },
-      { from: 'startup', to: 'associacao', text: '“Quero desenvolver junto.”', detail: 'conversa, piloto com lojas voluntárias e validação das hipóteses' },
-      { from: 'associacao', to: 'lojista', text: 'Solução nova entra no catálogo da rede', detail: 'e pode subir em uma rodada de pitch para toda a associação' },
+      { from: 'startup', to: 'associacao', text: 'GaekWare: “Quero desenvolver junto.”', detail: 'conversa, piloto com lojas voluntárias e validação das hipóteses' },
+      { from: 'associacao', to: 'lojista', text: 'Solução nova entra no catálogo da rede', detail: 'e sobe numa rodada de pitch no Connect ou no CITAP' },
     ],
   },
 }
@@ -184,3 +184,57 @@ export const FACTS = [
   { n: '81%', label: 'das empresas de 10–49 pessoas que vendem online usam mensagens ou chats', src: 'TIC Empresas 2025' },
   { n: '30%', label: 'usam site próprio — os canais podem se sobrepor', src: 'TIC Empresas 2025' },
 ]
+
+/* ───────── quem está na rede (Marília e Alta Paulista) ───────── */
+export type NetworkItem = { name: string; kind: string; initials: string; color: string; text: string; role: string; url?: string }
+export const NETWORK: { partners: NetworkItem[]; startups: NetworkItem[] } = {
+  partners: [
+    {
+      name: 'ACIM Connect Marília',
+      kind: 'associação comercial',
+      initials: 'AC',
+      color: '#4b7a0a',
+      text: 'Ambiente de inovação da ACIM — Associação Comercial e de Inovação de Marília — que aproxima startups, investidores e empreendedores, com aceleração focada em soluções para o varejo.',
+      role: 'No LinkHub: faz a curadoria, a triagem das demandas e organiza as rodadas de pitch.',
+      url: 'https://acim.org.br/',
+    },
+    {
+      name: 'CITAP',
+      kind: 'centro de inovação · Pompeia',
+      initials: 'CI',
+      color: '#2f7d5b',
+      text: 'Centro de Inovação Tecnológica da Alta Paulista, primeiro ambiente da região credenciado no SPAI, com foco em Agro 4.0, Saúde e Cidades Inteligentes.',
+      role: 'No LinkHub: sedia rodadas de Agro 4.0 e apoia pilotos com laboratórios e startups incubadas.',
+      url: 'https://citap.org.br',
+    },
+  ],
+  startups: [
+    {
+      name: 'GaekWare',
+      kind: 'software house · Marília',
+      initials: 'Gw',
+      color: '#0b0b0c',
+      text: 'Cria plataformas web, apps mobile e sistemas SaaS — da tela em branco à produção em 6 a 12 semanas.',
+      role: 'No LinkHub: pega oportunidades sem solução no catálogo e desenvolve junto com os lojistas.',
+      url: 'https://gaek.com.br',
+    },
+    {
+      name: 'SinalTerra',
+      kind: 'agtech · ecossistema CITAP',
+      initials: 'ST',
+      color: '#1f5a37',
+      text: 'Captura e análise de dados de campo com sensoriamento remoto e imagens de satélite para validar produtos agrícolas.',
+      role: 'No LinkHub: ajuda revendas agropecuárias a mostrar ao produtor o resultado dos insumos.',
+      url: 'https://sinalterra.com',
+    },
+    {
+      name: 'Shield-ACK',
+      kind: 'segurança de software',
+      initials: 'SA',
+      color: '#1d3f6b',
+      text: 'Consultoria em desenvolvimento de software seguro (AppSec, DevSecOps, OWASP SAMM) e agentes de atendimento 24/7 no WhatsApp.',
+      role: 'No LinkHub: atendimento automatizado para lojistas e apoio ao item de segurança e LGPD da curadoria.',
+      url: 'https://www.shield-ack.com.br',
+    },
+  ],
+}

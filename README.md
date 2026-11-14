@@ -6,7 +6,7 @@ Mesma identidade visual do app ([LinkHub-Frontend](https://github.com/EduardoMnz
 
 ## Seções
 
-- **Topo** — proposta em uma frase, colunas de *publicidade* (demonstram os espaços patrocinados da rede).
+- **Topo** — proposta em uma frase e chamadas para o protótipo.
 - **O que os lojistas estão pedindo** — quadro interativo (busca, filtros por status, “tenho a mesma necessidade”).
 - **Como o ecossistema conversa** — diagrama de sequência animado entre Lojista, LinkHub, Associação e Startup, nos cenários *existe solução* e *não existe solução*.
 - **Telas** — prints reais do protótipo por perfil (lojista, associação, startup e mobile), com ampliação.

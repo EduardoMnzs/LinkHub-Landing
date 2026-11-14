@@ -1,7 +1,7 @@
 import { ArrowRight, CalendarBlank, Moon, Plus, Sun } from '@phosphor-icons/react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { APP_URL, RAIL_ADS, REPO_URL, type RailAd } from './content'
+import { APP_URL, REPO_URL } from './content'
 import { Board } from './sections/Board'
 import { Closing } from './sections/Closing'
 import { Ecosystem } from './sections/Ecosystem'
@@ -84,77 +84,6 @@ function FloatingNav({ theme, onTheme }: { theme: string; onTheme: () => void })
   )
 }
 
-/** Mini card de marca: capa na cor do anunciante + monograma, sem emojis. */
-function RailAdCard({ ad, i }: { ad: RailAd; i: number }) {
-  return (
-    <motion.a
-      href="#ideias"
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: EASE, delay: 0.3 + 0.08 * i }}
-      className="group block overflow-hidden rounded-[16px] bg-card text-left shadow-card transition-shadow hover:shadow-lift"
-    >
-      <span className="relative block h-12 overflow-hidden" style={{ background: ad.color }}>
-        <span
-          aria-hidden
-          className="absolute inset-0 opacity-70"
-          style={{ background: 'radial-gradient(120% 140% at 100% 0%, rgb(255 255 255 / 0.28), transparent 55%)' }}
-        />
-        <span aria-hidden className="absolute -right-3 -bottom-5 size-16 rounded-full border border-white/20" />
-        <span aria-hidden className="absolute right-4 -bottom-8 size-16 rounded-full border border-white/15" />
-      </span>
-      <span className="relative -mt-5 grid gap-1.5 px-3 pb-3">
-        <span
-          className="grid size-10 place-items-center rounded-[11px] text-[13px] font-semibold tracking-[-0.02em] text-white ring-[3px] ring-card"
-          style={{ background: ad.color }}
-        >
-          {ad.initials}
-        </span>
-        <span className="grid gap-0.5">
-          <strong className="text-[12px] leading-[1.35] font-semibold">{ad.name}</strong>
-          <span className="font-mono text-[8.5px] tracking-[0.06em] text-faint uppercase">{ad.kind}</span>
-        </span>
-        <span className="text-[10.5px] leading-[1.5] text-mute">{ad.desc}</span>
-        <span className="mt-1 flex items-center border-t border-line pt-2">
-          <span className="flex items-center gap-0.5 text-[10.5px] font-semibold text-accent-ink">
-            {ad.cta}
-            <ArrowRight className="size-2.5 transition-transform group-hover:translate-x-0.5" />
-          </span>
-        </span>
-      </span>
-    </motion.a>
-  )
-}
-
-/** Coluna lateral de "PUBLICIDADE": demonstra os espaços patrocinados da própria rede. */
-function AdRail({ side }: { side: 'left' | 'right' }) {
-  const ads = RAIL_ADS[side]
-  return (
-    <aside aria-label={`Espaços de publicidade à ${side === 'left' ? 'esquerda' : 'direita'}`} className="sticky top-6 hidden self-start pt-6 xl:grid xl:gap-3">
-      <span className="text-center font-mono text-[8px] tracking-[0.14em] text-faint">PUBLICIDADE</span>
-      {ads.map((ad, i) => (
-        <RailAdCard key={ad.name} ad={ad} i={i} />
-      ))}
-      {side === 'right' && (
-        <motion.a
-          href="#ideias"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.3 + 0.08 * ads.length }}
-          className="group grid gap-1.5 rounded-[16px] border border-dashed border-line-strong p-3 text-left transition-colors hover:border-accent hover:bg-accent-soft/40"
-        >
-          <span className="grid size-8 place-items-center rounded-[10px] border border-dashed border-line-strong text-faint transition-colors group-hover:border-accent group-hover:text-accent-ink">
-            <Plus weight="bold" className="size-3.5" />
-          </span>
-          <strong className="text-[12px] font-semibold">Anuncie aqui</strong>
-          <span className="text-[10.5px] leading-[1.5] text-mute">Espaços revisados pela associação, a partir de R$ 150/mês.</span>
-        </motion.a>
-      )}
-      <p className="px-1 text-center text-[10px] leading-[1.5] text-faint">Marcas que fazem parte da jornada do lojista.</p>
-    </aside>
-  )
-}
-
 function Hero() {
   return (
     <section id="topo" className="grid justify-items-center px-4 pt-14 pb-12 text-center sm:pt-[65px]">
@@ -225,9 +154,8 @@ export default function App() {
   return (
     <div className="min-h-svh">
       <FloatingNav theme={theme} onTheme={toggleTheme} />
-      <div className="mx-auto grid max-w-[1340px] gap-8 xl:grid-cols-[150px_minmax(0,960px)_150px] xl:justify-center">
-        <AdRail side="left" />
-        <main className="min-w-0 px-4 sm:px-6 xl:px-0">
+      <div className="mx-auto max-w-[1008px]">
+        <main className="min-w-0 px-4 sm:px-6">
           <Hero />
           <Board />
           <Ecosystem />
@@ -243,7 +171,6 @@ export default function App() {
             </span>
           </footer>
         </main>
-        <AdRail side="right" />
       </div>
     </div>
   )

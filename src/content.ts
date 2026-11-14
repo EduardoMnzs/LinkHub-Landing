@@ -30,20 +30,6 @@ export const ROLES: Record<Role, { label: string; who: string; color: string; em
   },
 }
 
-/* ───────── anúncios das colunas laterais (a própria ideia de publicidade) ───────── */
-export type RailAd = { name: string; initials: string; color: string; desc: string; domain: string; cta: string; kind: string }
-export const RAIL_ADS: { left: RailAd[]; right: RailAd[] } = {
-  left: [
-    { name: 'Vendeja', initials: 'Vj', color: '#1f5a37', desc: '14 dias grátis para lojas da rede. Catálogo no WhatsApp em 10 minutos.', domain: 'vendeja.app', cta: 'Testar grátis', kind: 'startup' },
-    { name: 'Associação Comercial', initials: 'AC', color: '#4b7a0a', desc: 'Certificado digital com desconto para associados.', domain: 'acvaleverde.org', cta: 'Saiba mais', kind: 'associação' },
-    { name: 'Cor & Forma', initials: 'CF', color: '#b5473a', desc: 'Sacolas personalizadas para o Natal. Pedido mínimo de 100.', domain: 'corforma.com.br', cta: 'Orçamento', kind: 'empresa local' },
-  ],
-  right: [
-    { name: 'Atende+', initials: 'A+', color: '#1d3f6b', desc: 'Atendimento no WhatsApp sem fila, com vários atendentes no mesmo número.', domain: 'atendemais.io', cta: 'Ver planos', kind: 'startup' },
-    { name: 'Giro Estoque', initials: 'Gi', color: '#2f7d5b', desc: 'Estoque pelo celular com alerta de reposição. 30 dias grátis.', domain: 'giroestoque.com.br', cta: 'Testar grátis', kind: 'startup' },
-  ],
-}
-
 /* ───────── quadro "o que os lojistas mais pedem" ───────── */
 export type BoardStatus = 'com solução' | 'em teste' | 'em triagem' | 'oportunidade'
 export const BOARD: { need: string; category: string; emoji: string; segment: string; stores: number; status: BoardStatus }[] = [

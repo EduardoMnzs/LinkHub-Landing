@@ -35,15 +35,15 @@ export function Logo({ word = true, size = 28 }: { word?: boolean; size?: number
   )
 }
 
-/** Avatar no estilo do app: cor misturada com o card e o "mascote" na base. */
+/** Avatar: círculo com a cor misturada ao card e o ícone centralizado. */
 export function Avatar({ size, color, emoji, src, alt = '', className = '' }: { size: number; color: string; emoji?: string; src?: string; alt?: string; className?: string }) {
   const style: CSSProperties = { width: size, height: size, background: `color-mix(in srgb, ${color} 30%, var(--card))` }
   return (
     <span className={`relative inline-grid shrink-0 overflow-hidden rounded-full align-top ${className}`} style={style}>
       {src ? (
-        <img alt={alt} draggable={false} className="absolute inset-x-0 bottom-[3%] mx-auto h-[80%] w-auto object-contain" src={src} />
+        <img alt={alt} draggable={false} className="absolute inset-0 m-auto h-[72%] w-[72%] object-contain" src={src} />
       ) : (
-        <span role="img" aria-label={alt} className="absolute inset-x-0 bottom-[2%] text-center leading-none select-none" style={{ fontSize: size * 0.6 }}>
+        <span role="img" aria-label={alt} className="absolute inset-0 grid place-items-center leading-none select-none" style={{ fontSize: size * 0.52 }}>
           {emoji}
         </span>
       )}

@@ -1,7 +1,8 @@
 // Todo o texto da landing fica aqui para facilitar ajustes.
 
-/** Link do protótipo (defina VITE_APP_URL no deploy). */
-export const APP_URL = (import.meta.env.VITE_APP_URL as string | undefined) ?? 'http://localhost:5173'
+/** Link do protótipo (pode ser sobrescrito com VITE_APP_URL, ex.: para testar local). */
+export const APP_URL = (import.meta.env.VITE_APP_URL as string | undefined) ?? 'https://linkhub-plataform.gaek.com.br'
+export const SITE_URL = 'https://linkhub.gaek.com.br'
 export const REPO_URL = 'https://github.com/EduardoMnzs/LinkHub-Frontend'
 
 export type Role = 'lojista' | 'associacao' | 'startup'

@@ -11,9 +11,9 @@ function Card({ it, i }: { it: NetworkItem; i: number }) {
         <span aria-hidden className="absolute -right-4 -bottom-7 size-20 rounded-full border border-white/20" />
         <span aria-hidden className="absolute right-6 -bottom-10 size-20 rounded-full border border-white/15" />
       </span>
-      <span className="relative -mt-6 grid gap-2 px-5 pb-5">
-        <span className="grid size-12 place-items-center rounded-[13px] text-[15px] font-semibold tracking-[-0.02em] text-white ring-4 ring-card" style={{ background: it.color }}>
-          {it.initials}
+      <span className="relative -mt-7 grid gap-2 px-5 pb-5">
+        <span className="grid size-14 place-items-center overflow-hidden rounded-[15px] shadow-[0_1px_2px_rgb(0_0_0/0.08)] ring-4 ring-card" style={{ background: it.logo.bg, padding: it.logo.pad }}>
+          <img src={it.logo.src} alt={`Logo ${it.name}`} loading="lazy" draggable={false} className="size-full object-contain" />
         </span>
         <span className="grid gap-0.5">
           <span className="flex items-center gap-1.5">

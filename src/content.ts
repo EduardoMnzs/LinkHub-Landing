@@ -186,14 +186,23 @@ export const FACTS = [
 ]
 
 /* ───────── quem está na rede (Marília e Alta Paulista) ───────── */
-export type NetworkItem = { name: string; kind: string; initials: string; color: string; text: string; role: string; url?: string }
+/** logo: imagem em /public/logos · bg: fundo do quadrado · pad: respiro interno (0 = ocupa tudo) */
+export type NetworkItem = {
+  name: string
+  kind: string
+  logo: { src: string; bg: string; pad: number }
+  color: string
+  text: string
+  role: string
+  url?: string
+}
 export const NETWORK: { partners: NetworkItem[]; startups: NetworkItem[] } = {
   partners: [
     {
       name: 'ACIM Connect Marília',
       kind: 'associação comercial',
-      initials: 'AC',
-      color: '#4b7a0a',
+      logo: { src: '/logos/acim-icon.png', bg: '#ffffff', pad: 0 },
+      color: '#0f7a3a',
       text: 'Ambiente de inovação da ACIM — Associação Comercial e de Inovação de Marília — que aproxima startups, investidores e empreendedores, com aceleração focada em soluções para o varejo.',
       role: 'No LinkHub: faz a curadoria, a triagem das demandas e organiza as rodadas de pitch.',
       url: 'https://acim.org.br/',
@@ -201,8 +210,8 @@ export const NETWORK: { partners: NetworkItem[]; startups: NetworkItem[] } = {
     {
       name: 'CITAP',
       kind: 'centro de inovação · Pompeia',
-      initials: 'CI',
-      color: '#2f7d5b',
+      logo: { src: '/logos/citap-icon.png', bg: '#ffffff', pad: 7 },
+      color: '#284755',
       text: 'Centro de Inovação Tecnológica da Alta Paulista, primeiro ambiente da região credenciado no SPAI, com foco em Agro 4.0, Saúde e Cidades Inteligentes.',
       role: 'No LinkHub: sedia rodadas de Agro 4.0 e apoia pilotos com laboratórios e startups incubadas.',
       url: 'https://citap.org.br',
@@ -212,7 +221,7 @@ export const NETWORK: { partners: NetworkItem[]; startups: NetworkItem[] } = {
     {
       name: 'GaekWare',
       kind: 'software house · Marília',
-      initials: 'Gw',
+      logo: { src: '/logos/gaek-icon.png', bg: '#0b0b0c', pad: 8 },
       color: '#0b0b0c',
       text: 'Cria plataformas web, apps mobile e sistemas SaaS — da tela em branco à produção em 6 a 12 semanas.',
       role: 'No LinkHub: pega oportunidades sem solução no catálogo e desenvolve junto com os lojistas.',
@@ -221,7 +230,7 @@ export const NETWORK: { partners: NetworkItem[]; startups: NetworkItem[] } = {
     {
       name: 'SinalTerra',
       kind: 'agtech · ecossistema CITAP',
-      initials: 'ST',
+      logo: { src: '/logos/sinalterra-icon.png', bg: '#1f5a37', pad: 6 },
       color: '#1f5a37',
       text: 'Captura e análise de dados de campo com sensoriamento remoto e imagens de satélite para validar produtos agrícolas.',
       role: 'No LinkHub: ajuda revendas agropecuárias a mostrar ao produtor o resultado dos insumos.',
@@ -230,8 +239,8 @@ export const NETWORK: { partners: NetworkItem[]; startups: NetworkItem[] } = {
     {
       name: 'Shield-ACK',
       kind: 'segurança de software',
-      initials: 'SA',
-      color: '#1d3f6b',
+      logo: { src: '/logos/shield-icon.png', bg: '#171717', pad: 0 },
+      color: '#1f1f1f',
       text: 'Consultoria em desenvolvimento de software seguro (AppSec, DevSecOps, OWASP SAMM) e agentes de atendimento 24/7 no WhatsApp.',
       role: 'No LinkHub: atendimento automatizado para lojistas e apoio ao item de segurança e LGPD da curadoria.',
       url: 'https://www.shield-ack.com.br',

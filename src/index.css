@@ -1,0 +1,194 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ───────────── Tokens (mesmos do app LinkHub) ───────────── */
+:root,
+[data-theme='light'] {
+  --chrome: #ebe5da;
+  --chrome-fill: #e2dbce;
+  --canvas: #f6f2eb;
+  --card: #fdfbf7;
+  --well: #f1ece3;
+  --fill: #ebe5da;
+  --fill-hover: #e2dbce;
+  --line: #e8e2d7;
+  --line-strong: #d9d1c3;
+  --text: #2b2722;
+  --mute: #756d62;
+  --faint: #a89f92;
+  /* verde da marca (dinossauro) */
+  --accent: #8fd61f;
+  --accent-hover: #82c716;
+  --accent-soft: #ecf8d6;
+  --accent-ink: #4b7a0a;
+  --on-accent: #1d3307;
+  --live: #3f8f5a;
+  --burn: #c9714b;
+  --burn-soft: #f8e6dc;
+  --star: #e2a52c;
+  --dot: #d8d0c3;
+  --ink-card: #2b2722;
+  --shadow-card: 0 1px 2px #2b27220a, 0 0 0 1px var(--line);
+  --shadow-lift: 0 18px 40px -20px #2b272238, 0 0 0 1px var(--line);
+  --shadow-menu: 0 24px 60px -18px #2b272242, 0 0 0 1px #2b27220f;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --chrome: #151412;
+  --chrome-fill: #222220;
+  --canvas: #171614;
+  --card: #201e1b;
+  --well: #1b1a17;
+  --fill: #2a2824;
+  --fill-hover: #35322d;
+  --line: #282622;
+  --line-strong: #393631;
+  --text: #efebe4;
+  --mute: #a19a8f;
+  --faint: #6b655c;
+  --accent: #a3e635;
+  --accent-hover: #b4ef4f;
+  --accent-soft: #1e2a12;
+  --accent-ink: #b5ee45;
+  --on-accent: #1d3307;
+  --live: #6cc58a;
+  --burn: #ee8467;
+  --burn-soft: #33221b;
+  --star: #f0c35a;
+  --dot: #34312c;
+  --ink-card: #2a2824;
+  --shadow-card: 0 0 0 1px var(--line);
+  --shadow-lift: 0 18px 40px -20px #0009, 0 0 0 1px var(--line-strong);
+  --shadow-menu: 0 24px 60px -18px #000000b3, 0 0 0 1px var(--line-strong);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Geist Variable', system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Geist Variable', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Geist Mono Variable', Consolas, monospace;
+
+  --color-chrome: var(--chrome);
+  --color-chrome-fill: var(--chrome-fill);
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-well: var(--well);
+  --color-fill: var(--fill);
+  --color-fill-hover: var(--fill-hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-mute: var(--mute);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+  --color-live: var(--live);
+  --color-burn: var(--burn);
+  --color-burn-soft: var(--burn-soft);
+  --color-star: var(--star);
+  --color-dot: var(--dot);
+  --color-ink-card: var(--ink-card);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-lift: var(--shadow-lift);
+  --shadow-menu: var(--shadow-menu);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    background: var(--canvas);
+  }
+  body {
+    background-color: var(--canvas);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'ss01', 'cv11';
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 38%, transparent);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent);
+    outline-offset: 2px;
+  }
+  a[href],
+  button,
+  [role='button'],
+  [role='tab'],
+  summary,
+  select {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* evita colunas implícitas que estouram no mobile (mesma regra do app) */
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility card {
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+  border-radius: 20px;
+}
+@utility display {
+  font-family: var(--font-display);
+  letter-spacing: -0.028em;
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+@utility press {
+  transition:
+    transform 0.16s var(--ease-out-quint),
+    background-color 0.16s,
+    color 0.16s,
+    box-shadow 0.16s,
+    opacity 0.16s;
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
